@@ -1,0 +1,35 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_strstr.c                                      .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: kabouama <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/10/03 14:23:43 by kabouama     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/12 18:53:45 by kabouama    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strstr(const char *haystack, const char *needle)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	if (needle[0] == '\0')
+		return ((char*)haystack);
+	while (haystack[i])
+	{
+		j = 0;
+		while (needle[j] && needle[j] == haystack[i + j])
+			j++;
+		if (needle[j] == '\0')
+			return ((char*)(haystack += i));
+		i++;
+	}
+	return (0);
+}
